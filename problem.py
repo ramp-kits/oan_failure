@@ -18,7 +18,7 @@ target_data_path = os.path.join('data', TARGETDATA)
 # source_data_path = os.path.join('data', 'private', SOURCEDATA)
 # target_data_path = os.path.join('data', 'private', TARGETDATA)
 
-problem_title = 'Optical network access failure prediction'
+problem_title = 'Optical access network failure prediction'
 
 _prediction_label_names = [0, 1]
 MulticlassPredictions = rw.prediction_types.make_multiclass(
