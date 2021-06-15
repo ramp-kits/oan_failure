@@ -68,10 +68,9 @@ workflow = utils.workflow.FeatureExtractorClassifier()
 
 def _fetch_data(ramp_data_path):
     # If we have a pickle with the proprocessed data, load it
-    if os.path.isfile(ramp_data_path):
-        ramp_data = joblib.load(ramp_data_path)
-        data = ramp_data['data']
-        labels = ramp_data['labels']
+    ramp_data = joblib.load(ramp_data_path)
+    data = ramp_data['data']
+    labels = ramp_data['labels']
     return data, labels
 
 def _read_data(x, y):
@@ -97,11 +96,11 @@ def _read_data(x, y):
 def get_train_data(path='.'):
     print('Train data')
     # Source
-    source_path = os.path.join(source_data_path, 'ramp_train.pickle')
+    source_path = os.path.join(path, source_data_path, 'ramp_train.pickle')
     X_source, y_source = _fetch_data(source_path)
 
     # Target
-    target_path = os.path.join(target_data_path, 'ramp_target.pickle')
+    target_path = os.path.join(path, target_data_path, 'ramp_target.pickle')
     X_target, y_target = _fetch_data(target_path)
 
     source, _, source_bkg, y_source = _read_data(X_source, y_source)
@@ -117,7 +116,7 @@ def get_train_data(path='.'):
 
 def get_test_data(path='.'):
     print('Test data')
-    test_path = os.path.join(target_data_path, 'ramp_test.pickle')
+    test_path = os.path.join(path, target_data_path, 'ramp_test.pickle')
     X_test, y_test = _fetch_data(test_path)
 
     test, _, test_bkg, y_test = _read_data(X_test, y_test)
