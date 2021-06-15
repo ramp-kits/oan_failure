@@ -1,7 +1,4 @@
 from sklearn.ensemble import RandomForestClassifier
-from utils.dataset import OpticalDataset, OpticalLabels
-
-import numpy as np
 
 class Classifier:
 
