@@ -41,12 +41,13 @@ def reshape_dataset_ts(x, y, remove_nan_labels=True, n_days_past=None):
             idx = ~np.isnan(lab)  # Remove windows with no label
             lab = lab[idx]
             z = z[idx]  # Filter the corresponding users
+        z = z.astype(np.float32)
         labels.extend(lab)
         if dataset is None:
             dataset = z
         else:
             dataset = np.concatenate((dataset, z), axis=0)
-    return dataset, np.array(labels)
+    return dataset, np.asarray(labels)
 
 
 def prepare_data(train_path=None, labels_path=None, ramp_data_path=None,
@@ -55,7 +56,7 @@ def prepare_data(train_path=None, labels_path=None, ramp_data_path=None,
     labels = np.load(labels_path, allow_pickle=True)
 
     data, labels = reshape_dataset_ts(data,
-                                      labels.astype(np.float),
+                                      labels.astype(np.float32),
                                       remove_nan_labels,
                                       n_days_past=NDAYS)
     ramp_data = {'data': data, 'labels': labels}
