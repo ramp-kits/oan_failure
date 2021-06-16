@@ -33,4 +33,4 @@ The output will be located as follow
 These file are the one that will be read by `problem.py`.
 
 Be careful: we leave you the original data so you can explore it. But the private dataset has been generated using the original `prepare_data.py` program.
-So mess with it, we do not forget how the private dataset is processed :)
+So mess with it, but do not forget how the private dataset is processed :)
