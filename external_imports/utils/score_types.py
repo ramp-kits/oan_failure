@@ -48,7 +48,7 @@ class RecallAtK(BaseScoreType):
 class AveragePrecision(BaseScoreType):
     """ Average Precision score
     """
-    is_lower_the_better = True
+    is_lower_the_better = False
     minimum = 0
     maximum = 1
 
