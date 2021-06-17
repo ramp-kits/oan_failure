@@ -20,7 +20,7 @@ class FeatureExtractor(object):
         return fe
 
     def test_submission(self, trained_model, X):
-        return trained_model.transform(X)
+        return trained_model.transform(X.copy())
 
 
 class Classifier(object):
