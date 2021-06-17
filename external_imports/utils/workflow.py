@@ -20,6 +20,8 @@ class FeatureExtractor(object):
         return fe
 
     def test_submission(self, trained_model, X):
+        # We copy here otherwise when X is not sliced (in predict), no copy is
+        # created, and the first CV fold overwrites the original target data.
         return trained_model.transform(X.copy())
 
 
