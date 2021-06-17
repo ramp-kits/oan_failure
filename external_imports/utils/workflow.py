@@ -1,4 +1,5 @@
 import os
+import copy
 
 from .dataset import OpticalDataset, OpticalLabels
 from .cv import CVFold
@@ -80,9 +81,10 @@ class FeatureExtractorClassifier(object):
 
     def test_submission(self, trained_model, X):
         fe, clf = trained_model
-        X.target = self.feature_extractor_workflow.test_submission(
+        X_copy = copy.deepcopy(X)
+        X_copy.target = self.feature_extractor_workflow.test_submission(
             fe, X.target)
-        X.target_bkg = self.feature_extractor_workflow.test_submission(
+        X_copy.target_bkg = self.feature_extractor_workflow.test_submission(
             fe, X.target_bkg)
-        y_proba = self.classifier_workflow.test_submission(clf, X)
+        y_proba = self.classifier_workflow.test_submission(clf, X_copy)
         return y_proba
