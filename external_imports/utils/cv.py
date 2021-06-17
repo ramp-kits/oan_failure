@@ -61,8 +61,7 @@ class TLShuffleSplit:
         for _ in range(self.n_splits):
             train_fold = CVFold()
             valid_fold = CVFold()
-            train_fold.source, valid_fold.valid_source = next(
-                source_split_iter)
+            train_fold.source, valid_fold.source = next(source_split_iter)
             train_fold.target, valid_fold.target = next(target_split_iter)
             train_fold.source_bkg, valid_fold.source_bkg = next(
                 source_bkg_split_iter)
